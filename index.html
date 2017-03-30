@@ -1,0 +1,198 @@
+    
+<!DOCTYPE html>
+<html>
+<head>
+        <title>ITWS 2 6 | [20161098]</title>
+        
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+</head>
+<body onload="viewAllStudents();viewAllCourses()">
+                <div class="jumbotron text-center">
+
+        <h1>Javascript OOP</h1>
+        </div>
+
+        <div class="container">
+
+        <div class="row">
+        <div class="col-sm-6" >
+        <h2>ADD STUDENT TO THE DATABASE</h2>
+        <div class="form-group">
+        <form id="addNewStudent"  class="form-horizontal">
+                ROLL NO.:<input type="text" name="roll" id="roll" class="form-control" placeholder="Enter roll number between 2011XXXX-2016XXXX">
+                <br/>
+                NAME: <input type="text" name="name " id="name" class="form-control" placeholder="Enter alphabets only">
+                <br/>
+                YEAR:  <input type="text" name="year" id="year" class="form-control" placeholder="Enter UGX">
+                <br/>
+                <button type="button"   class="btn btn-primary" onclick="addNewStudenthelp()">ADD</button>
+
+        </form>
+
+        </div>
+        </div>
+        <div class="col-sm-6">
+        
+        <h2>ADD COURSE TO THE DATABASE</h2>
+        <div class="form-group">
+        <form id="addNewCourse" class="form-horizontal">
+                
+                                COURSE NAME: <input type="text" name="coursename " id="coursename" class="form-control" placeholder="Enter alphabets only">
+                <br/>
+                COURSE ID:      <input type="text" name="courseid" id="courseid"  class="form-control" placeholder="Enter as XXXYYY X=A-Z Y=0-9">
+                <br/>
+                <button type="button"  class="btn btn-primary"onclick="addNewCoursehelp()">ADD</button>
+                
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+        <div id="studenttable" class="jumbotron container">
+        <h2>STUDENT TABLE</h2>
+        <table id="allStudents" class="table table-bordered" >
+               <thead>
+                <tr>
+                        <td>Roll</td>
+                        <td>Name</td>
+                        <td>Year</td>
+                </tr>
+               </thead>
+               <tbody id="studenttablebody">
+               
+               </tbody>
+        </table>
+
+        </div>
+        <br />
+        <br />
+        <br />
+        
+
+        <div id="coursetable" class="container">
+        <div class="row">
+
+        <h2>COURSE TABLE</h2>
+
+        <table id="allCourses" class="table table-bordered">
+               <thead>
+                <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                </tr>
+               </thead>
+               <tbody id="coursetablebody">
+               
+               </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        </div>
+        </div>
+        <div class="jumbotron container">
+        <div  class="row">
+        
+        <div class="col-sm-6">
+        <h2>Add student to a course</h2>        
+        <form id="addStudentToCourse" class="form-horizontal">
+        STUDENT NAME:<select id="namestc"></select><br/>
+        COURSE NAME:<select id="coursestc"></select><br/>
+        <button type="button" onclick="addStudentToCoursehelp()" class="btn btn-primary">ADD</button> 
+        </form>
+        </div>
+        
+
+        <div class="col-sm-6">
+        <h2>Drop student from a Course</h2>     
+        <form id="DropStudentFromCourse" class="form-horizontal">
+        STUDENT NAME:<select id="namedsc"></select><br/>
+        COURSE NAME:<select id="coursedsc"></select><br/>
+        <button type="button" onclick="dropStudentFromCoursehelp()"
+        class="btn btn-primary" >DROP</button> 
+        </form>
+        </div>
+        </div>
+        </div>
+
+        <div class="container">
+        <div  class="row">
+        
+            <div class="col-sm-6">
+                <h2>Remove  a Course</h2>
+                <form id="removeCourse" class="form-horizontal">
+                        COURSE :<select id="courseremcou"></select><br/>
+                        <button type="button" onclick="removeCoursehelp()" class="btn btn-primary"> REMOVE </button>
+                </form>
+            </div>
+        
+        <div>
+            <h2>Remove  a Student</h2>
+            <form id="removeStudent" class="form-horizontal">
+                STUDENT:<select id="nameremstu"></select><br/>
+                <button type="button" onclick="removeStudenthelp()" class="btn btn-primary"> REMOVE </button>
+            </form>
+            </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+
+            </div>
+
+            <div class="jumbotron container">
+            <h2>All students taking a course</h2>
+            <form id="showStudentCourse" class="form-horizontal">
+            COURSE:<select id="coursestucou"> </select><br/>
+            <button type ="button" onclick="viewEnrolledhelp()" class="btn btn-primary">DISPLAY</button>
+            </form>
+                <table id="displayTableStudentCourse" class="table table-bordered">
+                   <thead>
+                    <tr>
+                            <td>ROLL</td>
+                            <td>NAME</td>
+                            <td>YEAR</td>
+                    </tr>
+                   </thead>
+                        <tbody id="displayTableStudentCourseBody">
+                   
+                         </tbody>
+                </table>
+            </div>
+
+            <div class="container">
+            <h2>All courses taken by a student</h2>
+            <form id="showCourseStudent">
+            STUDENT:<select id="studentcoustu"> </select><br/>
+            <button type ="button" onclick="viewCoursesTakenhelp()" class="btn btn-primary">DISPLAY</button>
+            </form>
+                <table id="displayTableCourseStudent" class="table table-bordered">
+                   <thead>
+                    <tr>
+                            <td>NAME</td>
+                            <td>ID</td>
+                        
+                    </tr>
+                   </thead>
+                        <tbody id="displayTableCourseStudentBody">
+                   
+                         </tbody>
+                </table>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+        <script src="main.js"></script>
+        
+            
+
+</body>
+</html>
